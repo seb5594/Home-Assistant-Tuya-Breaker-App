@@ -93,3 +93,9 @@ The official catalogue is presented as six-device pages with search and a brand 
 ## Independent repository migration
 
 Use the standalone [WiFi Namespace Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App), following its migration guide after all old-helper leases are recovered. Tuya Breaker keeps installed slug `tuya_breaker` and has its own release version. Helper and client use API protocol 3, not matching app release numbers. The helper reports its actual app identity for the setup link, even when installed from a different repository. This app builds independently from pinned source snapshots, with no sibling app checkout required.
+
+### Existing installations: catalog versus the former bundle repository
+
+If Tuya Breaker was installed from **Home-Assistant-Apps**, its repository ID and installed `tuya_breaker` slug stay the same; the catalog now points to this standalone source. Complete old-helper recovery before migrating to WiFi Namespace Helper.
+
+If it was installed directly from the former three-app repository, the new source repository has a different Home Assistant repository ID. There is no automatic data transfer between these installations. Before removing the old app, stop the session, verify radio return, create a Home Assistant backup, export private CloudCutter credentials and completed Lightleak dumps from the old Web UI, and keep original uploaded firmware files. Privately copy your pairing secret and configuration. Install the standalone app from the main catalog, configure it and the new helper, and verify them before removing the old installation. Perform these steps in Home Assistant's UI; do not delete an old helper while recovery is pending.
