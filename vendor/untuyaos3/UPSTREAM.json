@@ -1,0 +1,24 @@
+{
+  "repository": "seb5594/Home-Assistant-UnTuyaOS3-App",
+  "revision": "20ad483a657a0b35db2ee325331fc730c4e95703",
+  "note": "Reviewed base app/UI and integration subset. The independent radio SDK is pinned separately in vendor/wifi_helper.",
+  "files": {
+    "LICENSE": "35a28df3272b0d5b6ddd12ac23f47d6bbbebce30c6668a13c3af117e4fc685e3",
+    "app/association.py": "9a467252807b2ed368fc780a02f8b6e27072a440060e3d3fdc7a6b1c4b16e61f",
+    "app/build_info.json": "ad021b95f078c1cc5bd10454884c1b944bb72220c19e6878e42a8cec54302491",
+    "app/devices.py": "e85d542c848c94baced97d01466f046da0efbb585d10e1eae82f85cd26de5072",
+    "app/dhcp.py": "d48079ca9599e296926bada05bad5140480e2f75595e8e0eaa5f5a1037365a11",
+    "app/links.py": "e8a516e5f1afa87a10fd486651ba9ae98c3d8fe6e55869ecc6d1d5a998cfd083",
+    "app/ota_progress.py": "3af8cc0a385e4ef0c7fbb03b46f5eba5856fb952e11cd58ee5cfb12d8e167b25",
+    "app/ota_target.py": "dca08b2d73c5f092a952c9c954e585bed69406fc1839025241ea9999561e08aa",
+    "app/request_body.py": "24546fefd895ad36408b22bfdfa4b2b406e91f6a08466e28d9984b148deb3d5e",
+    "app/runner.py": "38991241a7c8fc5fd8d514ad116387a5a4f1eb43f458322fc6d9da354983e795",
+    "app/server.py": "c6946dd8d8bf7a9d67c855d74933f37206841349749fd9f5b42403a71e7e9ad5",
+    "app/supplicant.py": "0577244d4fb801663f520a6fdd3e953f547ba15401cb4e345625b209cf2a972b",
+    "integration/dhcp.sh": "5f718046a1071fb36022d44f0e163ac095f49b3f84e5f88d69ec50cefacc2ede",
+    "integration/patch_upstream.py": "25da68bd752f5fd52b69f7d3ea06d5bfa022791a7fbaeffe0c3693aae21afae2",
+    "app/static/app.js": "f33773ea96291852d0bf0f33fddf2df1cab9e5d678e593f7127b06d1827a3b63",
+    "app/static/index.html": "cb70b607a55e56ba985398e714b76d589234ed4159a3579a0fd3fd14669ce391",
+    "app/static/style.css": "c60e4d640cd2e41899fa373b70f7ed4c73eb32c38f21e855253ec286adcde917"
+  }
+}
