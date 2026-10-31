@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0-beta.4
+
+- Add a centered footer with the developer credit, project link, Home Assistant Apps catalog and PayPal support button.
+
 ## 1.2.0-beta.3
 
 - Display the app as Tuya Breaker; retain the Home Assistant experimental stage and all flashing warnings.
