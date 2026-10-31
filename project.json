@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0-beta.2",
+  "version": "1.2.0-beta.3",
   "protocol": 3,
   "base_image": "ghcr.io/home-assistant/base-python:3.13-alpine3.24@sha256:c7d34ae22a87275d46deb65bcb0511b389d7bc6eb8dccb28d44dd7cb8616e603",
   "upstream_repository": "tuya-cloudcutter/UnTuyaOS3",
@@ -58,7 +58,7 @@
   "apps": {
     "tuya_breaker": {
       "config": {
-        "name": "Tuya Breaker (Experimental)",
+        "name": "Tuya Breaker",
         "description": "One experimental Ingress workspace for UnTuyaOS3, Lightleak flash backups and Tuya-Cloudcutter, with an isolated Wi-Fi lease",
         "timeout": 30,
         "ingress": true,

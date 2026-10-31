@@ -86,6 +86,7 @@ def outputs(root=ROOT):
         files['tuya_breaker/app/static/style.css'] += '\n' + (root/'tuya_breaker/ui/style.css').read_text(encoding='utf-8')
         files['tuya_breaker/app/static/style.css'] += '\n' + (root/'tuya_breaker/ui/hardware.css').read_text(encoding='utf-8')
         page = (root / "vendor/untuyaos3/app/static/index.html").read_text(encoding="utf-8")
+        page = page.replace('WiFi Namespace Helper', 'WiFi App Helper')
         page = page.replace('<title>UnTuyaOS3</title>', '<title>Tuya Breaker</title>')
         page = page.replace('<h1>UnTuyaOS3<span', '<h1>Tuya Breaker<span')
         tools_page = (root / 'tuya_breaker/ui/tools.html').read_text(encoding='utf-8')

@@ -1,8 +1,8 @@
 <!-- header:begin (generated from project metadata) -->
-<h1 align="center">Tuya Breaker (Experimental)</h1>
+<h1 align="center">Tuya Breaker</h1>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/seb5594/Home-Assistant-Tuya-Breaker-App/dev/tuya_breaker/logo.png" alt="Tuya Breaker (Experimental)" width="360" height="129">
+  <img src="https://raw.githubusercontent.com/seb5594/Home-Assistant-Tuya-Breaker-App/dev/tuya_breaker/logo.png" alt="Tuya Breaker" width="360" height="129">
 </p>
 
 ---
@@ -11,13 +11,14 @@
   <a href="https://paypal.me/seb5594"><img src="https://img.shields.io/static/v1?label=Support&amp;message=PayPal&amp;color=0070BA&amp;logo=paypal&amp;logoColor=white&amp;style=for-the-badge" alt="PayPal" height="40"></a>
   <a href="https://buymeacoffee.com/seb5594"><img src="https://img.shields.io/static/v1?label=Support&amp;message=Buy%20Me%20a%20Coffee&amp;color=FFDD00&amp;logo=buy-me-a-coffee&amp;logoColor=black&amp;style=for-the-badge" alt="Buy Me a Coffee" height="40"></a><br>
   <a href="https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fseb5594%2FHome-Assistant-Apps"><img src="https://img.shields.io/static/v1?label=Home%20Assistant&amp;message=Add%20app%20repository&amp;color=18BCF2&amp;logo=homeassistant&amp;logoColor=white&amp;style=for-the-badge" alt="Home Assistant" height="28"></a>
-  <a href="https://github.com/seb5594/Home-Assistant-Tuya-Breaker-App/releases/tag/v1.2.0-beta.2"><img src="https://img.shields.io/static/v1?label=version&amp;message=Beta%202&amp;color=1877A5&amp;style=for-the-badge" alt="version" height="28"></a>
+  <a href="https://github.com/seb5594/Home-Assistant-Tuya-Breaker-App/releases"><img src="https://img.shields.io/static/v1?label=version&amp;message=Beta%203&amp;color=1877A5&amp;style=for-the-badge" alt="version" height="28"></a>
   <img src="https://img.shields.io/static/v1?label=image%20pulls&amp;message=4&amp;color=1877A5&amp;style=for-the-badge" alt="image pulls" height="28"><br>
   <img src="https://img.shields.io/static/v1?label=arch%20%26%20size&amp;message=amd64%20200.2%20%C2%B7%20aarch64%20219.4%20MiB&amp;color=157F71&amp;style=flat" alt="arch &amp; size" height="20">
   <img src="https://img.shields.io/static/v1?label=stage&amp;message=experimental&amp;color=2F855A&amp;style=flat" alt="stage" height="20">
   <img src="https://img.shields.io/static/v1?label=ingress&amp;message=enabled&amp;color=7C3AED&amp;style=flat" alt="ingress" height="20">
   <img src="https://img.shields.io/static/v1?label=mounts%20%28read-write%29&amp;message=share&amp;color=B45309&amp;style=flat" alt="mounts (read-write)" height="20">
   <img src="https://img.shields.io/static/v1?label=privileged&amp;message=NET_ADMIN%2C%20NET_RAW&amp;color=B45309&amp;style=flat" alt="privileged" height="20"><br>
+  <a href="https://github.com/seb5594/Home-Assistant-Apps/stargazers"><img src="https://img.shields.io/github/stars/seb5594/Home-Assistant-Tuya-Breaker-App?label=stars&amp;style=flat" alt="stars" height="20"></a>
   <a href="https://github.com/seb5594/Home-Assistant-Apps/issues"><img src="https://img.shields.io/github/issues/seb5594/Home-Assistant-Tuya-Breaker-App?label=issues&amp;style=flat" alt="issues" height="20"></a>
   <img src="https://img.shields.io/static/v1?label=runtime%20tests&amp;message=9%20passed&amp;color=2F855A&amp;style=flat" alt="runtime tests" height="20">
   <a href="https://github.com/seb5594/Home-Assistant-Tuya-Breaker-App/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/seb5594/Home-Assistant-Tuya-Breaker-App/ci.yml?branch=dev&amp;label=checks&amp;style=flat" alt="checks" height="20"></a>
@@ -27,11 +28,11 @@
 
 **English** · [Deutsch](README.de.md)
 
-Tuya Breaker combines **UnTuyaOS3 → Lightleak → Tuya-Cloudcutter** in one experimental Home Assistant Ingress workspace. It has its own release cycle and uses the independent [WiFi Namespace Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App) to borrow one isolated radio. The [standalone UnTuyaOS3 app](https://github.com/seb5594/Home-Assistant-UnTuyaOS3-App) remains available separately.
+Tuya Breaker combines **UnTuyaOS3 → Lightleak → Tuya-Cloudcutter** in one experimental Home Assistant Ingress workspace. It has its own release cycle and uses the independent [WiFi App Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App) to borrow one isolated radio. The [standalone UnTuyaOS3 app](https://github.com/seb5594/Home-Assistant-UnTuyaOS3-App) remains available separately.
 
 > **This tool can permanently brick devices. Use at your own risk and accept responsibility for your hardware. Neither a completed transfer nor a valid dump guarantees that a device boots. Lightleak setup itself changes flash; its dumps are private post-exploit snapshots. The native Lightleak controller and Linux AP mode still need physical-device validation.**
 
-Install Tuya Breaker and WiFi Namespace Helper from the [Home Assistant Apps catalog](https://github.com/seb5594/Home-Assistant-Apps), configure the same private pairing secret and keep Protection mode/AppArmor on. All user interaction uses the app Configuration and Ingress Web UI; no host terminal is needed.
+Install Tuya Breaker and WiFi App Helper from the [Home Assistant Apps catalog](https://github.com/seb5594/Home-Assistant-Apps), configure the same private pairing secret and keep Protection mode/AppArmor on. All user interaction uses the app Configuration and Ingress Web UI; no host terminal is needed.
 
 [Full setup and usage guide](tuya_breaker/DOCS.md) · [Changelog](tuya_breaker/CHANGELOG.md) · [WiFi Helper migration](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App/blob/dev/README.md#migration-from-anti-tuya-wifi-helper)
 

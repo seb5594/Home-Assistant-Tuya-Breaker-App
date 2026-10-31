@@ -1,9 +1,15 @@
 # Changelog
 
+## 1.2.0-beta.3
+
+- Display the app as Tuya Breaker; retain the Home Assistant experimental stage and all flashing warnings.
+- Use the current WiFi App Helper name in setup instructions, documentation and the Ingress setup card.
+- Preserve adapter pairing, permissions, radio cleanup and all tool behavior.
+
 ## 1.2.0-beta.2
 
 - Move Tuya Breaker into its standalone repository with independent versioning and complete pinned base/SDK snapshots.
-- Use the general WiFi Namespace Helper and generic private socket; helper/client release numbers may differ.
+- Use the general WiFi App Helper and generic private socket; helper/client release numbers may differ.
 - Add mobile device/profile cards with brand filtering, six-device pages, full firmware/chip/SDK details, explicit profile selection and optional compact selectors.
 - Invalidate an older backend profile approval when loading another device.
 - Preserve UnTuyaOS3, Lightleak, CloudCutter, shared radio isolation and cleanup.
