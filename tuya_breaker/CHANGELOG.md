@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0-beta.4
+
+- Update the pinned Home Assistant Python base image to Python 3.14 and regenerate the build context from project.json.
+
 ## 1.2.0-beta.3
 
 - Display the app as Tuya Breaker; retain the Home Assistant experimental stage and all flashing warnings.
