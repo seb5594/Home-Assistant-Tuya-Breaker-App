@@ -167,13 +167,13 @@ import get_input
 from cloudcutter.crypto.pskcontext import PSKContext
 from cloudcutter_session import NETWORK
 assert str(NETWORK) == '10.204.0.0/24'
-assert sys.version_info[:2] == (3, 13)
+assert sys.version_info[:2] == (3, 14)
 assert PSKContext()._psk_and_pskid(b'', True) == b''
 for chip in ('BK7231T', 'BK7231N', 'RTL8710BN', 'RTL8720CF'):
     files = list((Path('/opt/untuyaos3/custom-firmware') / chip).glob('*.bin'))
     assert files, chip
     assert any(get_input.validate_firmware_file_internal(str(file), chip.lower()).name.startswith('VALID_') for file in files), chip
-print('PASS: CloudCutter Python 3.13, binary-PSK bridge, controller and per-chip UG/OTA library')
+print('PASS: CloudCutter Python 3.14, binary-PSK bridge, controller and per-chip UG/OTA library')
 CHECK_CLOUDCUTTER
     /opt/cloudcutter-venv/bin/python - <<'CHECK_EMBEDDED_SERVERS'
 # Exercise both actual embedded entry points: an absent firmware_dir in Detach
