@@ -98,6 +98,7 @@ def outputs(root=ROOT):
         page = page.replace('<p class="hint">Kickstart starts', '<p id="kickstart-help" class="hint">Kickstart starts')
         page = page.replace('<option>T1</option>', '<option>T1</option><option>BK7231T</option><option>RTL8710BN</option>')
         page = page.replace('Give compatible Tuya devices a new beginning.', 'UnTuyaOS3, Lightleak and Tuya-Cloudcutter in Home Assistant.')
+        page = page.replace('</footer>', '\n' + (root / 'tuya_breaker/ui/footer.html').read_text(encoding='utf-8') + '</footer>')
         files["tuya_breaker/app/static/index.html"] = page
         files["tuya_breaker/integration/patch_upstream.py"] = (root / "vendor/untuyaos3/integration/patch_upstream.py").read_text(encoding="utf-8")
         files["tuya_breaker/integration/dhcp.sh"] = (root / "vendor/untuyaos3/integration/dhcp.sh").read_text(encoding="utf-8")

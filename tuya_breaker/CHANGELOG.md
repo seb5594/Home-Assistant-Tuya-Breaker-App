@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0-beta.5
+
+- Add the centered developer credit, app catalog link and support footer.
+
 ## 1.2.0-beta.4
 
 - Update the pinned Home Assistant Python base image to Python 3.14 and regenerate the build context from project.json.
