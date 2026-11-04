@@ -25,7 +25,7 @@
 </p>
 <!-- header:end -->
 
-**English** · [Deutsch](README.de.md)
+**🇬🇧 English** · [🇩🇪 Deutsch](README.de.md)
 
 Tuya Breaker combines **UnTuyaOS3 → Lightleak → Tuya-Cloudcutter** in one experimental Home Assistant Ingress workspace. It has its own release cycle and uses the independent [WiFi App Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App) to borrow one isolated radio. The [standalone UnTuyaOS3 app](https://github.com/seb5594/Home-Assistant-UnTuyaOS3-App) remains available separately.
 

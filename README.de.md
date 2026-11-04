@@ -1,6 +1,6 @@
 # Tuya Breaker
 
-[English](README.md) · **Deutsch**
+[🇬🇧 English](README.md) · **🇩🇪 Deutsch**
 
 Eine experimentelle Home-Assistant-WebUI für **UnTuyaOS3 → Lightleak → Tuya-Cloudcutter**, mit eigenständiger Versionierung und dem separat installierbaren [WiFi App Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App).
 
