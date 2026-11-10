@@ -1,9 +1,10 @@
 "use strict";
-let hardwareDevices = [], hardwarePage = 0, hardwareTimer, hardwareBusy = false;
+let hardwareDevices = [], hardwarePage = 0, hardwareTimer, hardwareBusy = false, currentTool = "untuyaos3";
 const HARDWARE_PAGE_SIZE = 6;
 const previousStatus = window.onSessionStatus;
 window.onSessionStatus = (state, data) => {
   previousStatus(state, data);
+  currentTool = data.tool || "untuyaos3";
   hardwareBusy = ["running","assigning","cleaning","releasing","offline"].includes(state)
     || Boolean(data.adapter_busy || data.selection_locked || breakerPending || startPending);
   $("ob-refresh").disabled = hardwareBusy;
@@ -39,7 +40,12 @@ async function showHardware(device) {
 }
 async function findHardwareProfiles(device) {
   if (hardwareBusy) return;
+  // The hardware explorer is reachable from every tool; jump to CloudCutter the
+  // same way a manual tab click would, reusing that single switch-and-poll path.
+  if (currentTool !== "cloudcutter") await $("tool-cloudcutter").onclick();
+  if (currentTool !== "cloudcutter") return; // switch was blocked; its own handler already explained why
   if (!breakerDevices.length) await $("cc-refresh").onclick();
+  $("cc-device-picker").open = true;
   $("cc-search").value = device.model || device.name;
   $("cc-search").oninput();
   $("hardware-explorer").open = false;

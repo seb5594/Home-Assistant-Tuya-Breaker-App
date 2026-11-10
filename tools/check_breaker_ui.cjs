@@ -49,7 +49,9 @@ const template = fs.readFileSync(root + "/index.html", "utf8").replace(/__[A-Z_]
       await page.waitForFunction(() => document.getElementById("state").textContent === "ready");
       assert.equal(await page.locator("#start").isDisabled(), true);
       if (width === 390) fs.writeFileSync("docs/images/breaker-mobile-untuyaos3.png", await page.screenshot({fullPage: true}));
-      assert.deepEqual(await page.locator(".tool-tabs button").allTextContents(), ["UnTuyaOS3","Lightleak","Tuya-Cloudcutter"]);
+      assert.deepEqual(await page.locator(".tool-tabs button").allTextContents(), ["UnTuyaOS3","Lightleak","Tuya CloudCutter"]);
+      // The hardware explorer is a shared reference panel, visible before any tool switch.
+      assert.equal(await page.locator("#hardware-explorer").isVisible(), true);
       await page.locator("#tool-lightleak").click();
       await page.locator("#lightleak-settings").waitFor({state:"visible"});
       assert.equal(await page.locator("#start").isDisabled(),true);
@@ -76,8 +78,8 @@ const template = fs.readFileSync(root + "/index.html", "utf8").replace(/__[A-Z_]
       await page.waitForFunction(()=>document.getElementById("state").textContent==="cancelled");
       assert.equal(await page.locator("#start").isDisabled(),true);
       assert.equal(await page.locator("#adapter-select").isDisabled(),false);
-      await page.locator("#tool-cloudcutter").click();
-      await page.locator("#cloudcutter-settings").waitFor({state: "visible"});
+      // Still on the Lightleak tab: the explorer does not require switching tools first.
+      assert.equal(await page.locator("#cloudcutter-settings").isVisible(), false);
       await page.locator("#hardware-explorer summary").first().click();
       await page.locator("#ob-refresh").click();
       await page.waitForFunction(()=>document.querySelectorAll(".device-tile").length===6);
@@ -94,6 +96,9 @@ const template = fs.readFileSync(root + "/index.html", "utf8").replace(/__[A-Z_]
       await page.locator("#ob-close").click();
       if(width===390) fs.writeFileSync("docs/images/breaker-mobile-hardware.png",await page.locator("#hardware-explorer").screenshot());
       await page.getByRole("button",{name:"Find CloudCutter profiles"}).click();
+      await page.locator("#cloudcutter-settings").waitFor({state: "visible"});
+      assert.equal(await page.locator("#tool-cloudcutter").getAttribute("aria-pressed"), "true",
+        "Finding profiles switches to the CloudCutter tab by itself");
       assert.equal(await page.locator("#cc-profile").inputValue(),"","Hardware never approves an exploit profile");
       assert.equal(await page.locator("#start").isDisabled(),true);
       await page.locator("#cc-search").fill("");

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026.11.10
+
+- Switch versioning from SemVer-style beta numbers to calendar versioning (`YYYY.MM.DD`, with an
+  additive `.2`, `.3`, … suffix for a same-day rebuild). The three-tool workspace stays experimental.
+- Unify the three tool workspaces: the OpenBeken hardware explorer is now a shared, always-visible
+  reference panel instead of being nested only inside the CloudCutter tab, and "Find CloudCutter
+  profiles" now switches to the CloudCutter tab itself instead of requiring a manual switch first.
+- Minor WebUI cleanup: remove a dead, overridden `.tool-tabs` CSS rule and align the CloudCutter
+  tab label with its name used elsewhere in the app ("Tuya CloudCutter").
+
 ## 1.2.0-beta.5
 
 - Add the centered developer credit, app catalog link and support footer.

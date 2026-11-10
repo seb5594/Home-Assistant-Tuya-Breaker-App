@@ -1,8 +1,9 @@
 <section class="card tool-card"><div class="section-heading"><div><span class="eyebrow">EXPERIMENTAL · CHOOSE A TOOL</span><h2>One workspace, one active radio</h2></div></div>
 <div class="adapter-settings"><div class="tool-tabs" role="group" aria-label="Flashing tool">
-<button id="tool-untuyaos3" type="button" aria-pressed="true">UnTuyaOS3</button><button id="tool-lightleak" class="secondary" type="button" aria-pressed="false">Lightleak</button><button id="tool-cloudcutter" class="secondary" type="button" aria-pressed="false">Tuya-Cloudcutter</button></div>
+<button id="tool-untuyaos3" type="button" aria-pressed="true">UnTuyaOS3</button><button id="tool-lightleak" class="secondary" type="button" aria-pressed="false">Lightleak</button><button id="tool-cloudcutter" class="secondary" type="button" aria-pressed="false">Tuya CloudCutter</button></div>
 <p id="tool-description">UnTuyaOS3: use the established platform and firmware menus.</p>
 <p class="hint">The tools use different exploits. A successful run with one does not establish compatibility with the other. Tool selection unlocks after cleanup.</p>
+<!-- HARDWARE_EXPLORER -->
 <div id="lightleak-settings" hidden>
 <details id="ll-configuration" open><summary>Lightleak · chip, AP and flash backup</summary>
 <p><strong>Experimental. Lightleak setup writes target flash and can brick your device.</strong> It installs a Wi-Fi stager and erases/writes a payload sector before reading a 2 MiB dump. The dump contains secrets and payload changes. This mode does not install replacement firmware.</p>
@@ -23,7 +24,6 @@
 <div id="cloudcutter-settings" hidden>
 <details id="cc-configuration" open><summary>Device profile and operation</summary>
 <p><strong>CloudCutter needs an exact device/firmware profile.</strong> Check the original firmware version before removing the device from SmartLife. Patched firmware cannot be made vulnerable by selecting another profile.</p>
-<!-- HARDWARE_EXPLORER -->
 <button id="cc-refresh" class="secondary" type="button">Load / refresh official device catalogue</button>
 <details id="cc-device-picker" open><summary>1 · Find the exact device and original firmware</summary><div class="cc-picker-heading"><span class="eyebrow">1 · FIND YOUR EXACT DEVICE</span><h3>Device and original firmware</h3><p class="hint">Search the model and the firmware version shown in SmartLife. Similar hardware alone is not a match.</p></div>
 <div class="cc-filters"><div><label for="cc-search">Search model or firmware</label><input id="cc-search" type="search" placeholder="Brand, model, original firmware…" autocomplete="off"></div><div><label for="cc-brand">Brand</label><select id="cc-brand"><option value="">All brands</option></select></div></div>
