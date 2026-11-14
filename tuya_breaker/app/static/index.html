@@ -5,7 +5,7 @@
 <meta name="csrf" content="__CSRF__">
 <meta name="report-url" content="__REPORT_URL__">
 <title>Tuya Breaker</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
-<script src="breaker.js" defer></script><script src="lightleak.js" defer></script><script src="hardware.js" defer></script></head>
+<script src="breaker.js" defer></script><script src="lightleak.js" defer></script><script src="hardware.js" defer></script><script src="session.js" defer></script></head>
 <body>
 <header><div><span class="eyebrow">HOME ASSISTANT · DEVICE TOOLS</span><h1>Tuya Breaker<span class="version">__VERSION__</span></h1>
 <p>UnTuyaOS3, Lightleak and Tuya-Cloudcutter in Home Assistant.</p>
@@ -107,15 +107,33 @@
 <div class="actions"><button id="start" disabled>Start interactive session</button><button id="cancel" class="danger" disabled>Stop session</button>
 <a class="button secondary" href="api/logs" download="untuyaos3-logs.zip">Download logs</a></div></section>
 <div id="notice" class="notice" role="status" aria-live="polite">Reading live status…</div>
+<section id="session-overview" class="card session-overview" aria-labelledby="session-heading" hidden>
+  <div class="section-heading">
+    <div><h2 id="session-heading">Session progress</h2><p id="session-tool"></p></div>
+    <span id="session-result" class="badge" role="status"></span>
+  </div>
+  <div class="session-body">
+    <ol id="session-stages" aria-label="Session stages">
+      <li>Prepare</li><li>Wi-Fi</li><li>Device operation</li><li>Radio cleanup</li>
+    </ol>
+    <p id="session-detail" role="status"></p>
+    <div id="session-transfer" class="session-transfer" hidden>
+      <div><label id="session-meter-label" for="session-meter"></label><span id="session-percent"></span></div>
+      <progress id="session-meter" max="100"></progress>
+      <p id="session-bytes"></p>
+    </div>
+    <dl id="session-facts" class="session-facts"></dl>
+  </div>
+</section>
 <div class="workspace">
-<section class="card terminal-card"><div class="section-heading"><div><span class="eyebrow">INTERACTIVE SESSION</span><h2>Session console</h2></div><span class="live">● LIVE</span></div>
+<section class="card terminal-card"><details id="session-console"><summary>Session console</summary>
 <pre id="terminal" tabindex="0" aria-label="UnTuyaOS3 console output"></pre>
-<form id="choice-form"><label for="choice">Menu choice</label><input id="choice" inputmode="numeric" pattern="[0-9]{1,5}" maxlength="5" placeholder="e.g. 1" autocomplete="off" required disabled>
+</details><div id="session-menu" hidden><h3 id="session-menu-title"></h3><div id="session-menu-options" role="group" aria-labelledby="session-menu-title"></div></div><form id="choice-form"><label for="choice">Menu choice</label><input id="choice" inputmode="numeric" pattern="[0-9]{1,5}" maxlength="5" placeholder="e.g. 1" autocomplete="off" required disabled>
 <button id="send" disabled>Submit choice ↵</button></form>
-<p class="hint">Answer the numbered prompts above. Your session continues when you close this page.</p></section>
-<section class="card log-card"><div class="section-heading"><div><span class="eyebrow">ALWAYS VISIBLE</span><h2>Activity & diagnostics</h2></div>
+<p class="hint">Submit the menu choice shown here or open the console for the full prompt.</p></section>
+<section class="card log-card"><details id="session-diagnostics"><summary>Activity &amp; diagnostics</summary><div class="section-heading">
 <div class="log-actions"><label class="follow"><input id="follow" type="checkbox" checked> Follow</label><button id="clear-logs" class="secondary">Clear logs</button></div></div>
-<pre id="logs" tabindex="0" aria-label="Live diagnostic log"></pre><p class="hint">Logs start fresh when the app starts. Clear logs deletes saved logs and clears both panels; an active session continues. Retention is limited to 6 MiB.</p></section>
+<pre id="logs" tabindex="0" aria-label="Live diagnostic log"></pre><p class="hint">Logs start fresh when the app starts. Clear logs deletes saved logs and clears both panels; an active session continues. Retention is limited to 6 MiB.</p></details></section>
 </div>
 <details id="firmware-library" class="card firmware-card"><summary>Optional · Firmware library — upload a UG image</summary><div><h2>Bring your own UG image</h2>
 <p>Bundled firmware is already available in the script's menu. Additional images stay in this app's private storage.</p>

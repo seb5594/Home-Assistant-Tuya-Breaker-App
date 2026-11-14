@@ -41,6 +41,14 @@ Search across vendor, model, chip, module and keywords; filter for detailed tear
 
 Thank you to **OpenBeken / openshwprojects**, the **Elektroda.com teardown authors and contributors**, and the **tuya-cloudcutter community** for building and sharing these resources. Source links remain visible in the explorer. Community data retains its original attribution and terms; this app's MIT license does not relicense those records.
 
+## Session progress
+
+The progress card appears when a session starts. It shows the active stage, elapsed time and adapter. For UnTuyaOS3 it also shows the recognized platform and firmware menu, device Wi-Fi, signal and firmware transfer. Choose a menu option and press **Submit choice**. Open **Session console** for the original prompt whenever a menu is not recognized. Lightleak and CloudCutter still use the original console prompts for their confirmations.
+
+The UnTuyaOS3 bar counts unique byte ranges reported by the script. The final result distinguishes a device-confirmed transfer, an unconfirmed transfer, an error and a stopped session. For Lightleak the bar measures bytes read. CloudCutter shows stages and the session result where no measured byte count is available.
+
+Expand **Session console** or **Activity & diagnostics** to read live output. Reloading the page or clearing the logs keeps the current session summary. The summary only exposes selected fields, while the raw logs may contain sensitive device data.
+
 ## Secrets, logs and cleanup
 
 Destination Wi-Fi credentials are not returned in status or written to the journal. They live in memory and a mode-0600 private session file, and are removed after the attempt. Obvious secret-bearing upstream log lines are redacted. Treat diagnostic archives as private nevertheless.

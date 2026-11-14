@@ -170,7 +170,7 @@ async function poll() {
         select_adapter: data.adapter_error || "Select an eligible Wi-Fi adapter above. Start the helper first if discovery is unavailable.",
         assigning: "Checking and assigning the selected radio to this app…",
         releasing: "Returning the adapter and restoring its original host settings…",
-        running: "Session active. Follow the console; submit a menu choice when prompted.",
+        running: "Session active. Check session progress for the next step.",
         finished: "Script finished with exit code " + data.exit_code + ". Review the console and verify your device.",
         unconfirmed: "The device did not confirm completion. Review the transfer log, check for Kickstart Wi-Fi and verify the device before attempting another flash.",
         cancelled: "Session stopped. Review the logs before trying again.",
@@ -193,7 +193,7 @@ $("start").onclick = async () => {
     $("risk-ack").checked = false;
     await poll();
     // Do not pop up a phone's keyboard before there is a menu to answer.
-    document.querySelector(".terminal-card")?.scrollIntoView?.({block: "start"});
+    document.querySelector("#session-overview")?.scrollIntoView?.({block: "start"});
   } catch (error) { notice(error.message, true); }
   finally { startPending = false; controls(currentState, currentStatus); }
 };

@@ -10,6 +10,7 @@ import server
 from devices import Devices
 from breaker_runner import BreakerRunner
 from request_body import read_body, RequestBodyError
+from session_view import BreakerJournal
 
 
 class BreakerDevices(Devices):
@@ -26,11 +27,11 @@ class BreakerHandler(server.Handler):
         path = urlsplit(self.path).path
         backup = re.fullmatch(r'/api/lightleak/backups/([0-9a-f]{32})',path)
         hardware_detail = re.fullmatch(r'/api/cloudcutter/hardware/([0-9a-f]{20})',path)
-        if path not in ('/breaker.js', '/hardware.js', '/lightleak.js', '/api/lightleak', '/api/cloudcutter/catalogue', '/api/cloudcutter/credentials', '/api/cloudcutter/hardware') and not hardware_detail and not backup:
+        if path not in ('/breaker.js', '/hardware.js', '/lightleak.js', '/session.js', '/api/lightleak', '/api/cloudcutter/catalogue', '/api/cloudcutter/credentials', '/api/cloudcutter/hardware') and not hardware_detail and not backup:
             return super().do_GET()
         if not self.trusted():
             return
-        if path in ('/breaker.js','/hardware.js','/lightleak.js'):
+        if path in ('/breaker.js','/hardware.js','/lightleak.js','/session.js'):
             return self.reply(200, (server.STATIC/path[1:]).read_bytes(), 'text/javascript; charset=utf-8')
         if path == '/api/lightleak':
             runner=self.server.runner
@@ -106,6 +107,7 @@ class BreakerHandler(server.Handler):
 
 def configure_server():
     server.Runner, server.Devices, server.Handler = BreakerRunner, BreakerDevices, BreakerHandler
+    server.Journal = BreakerJournal
     server.MAGIC.update(BK7231T=(0, bytes.fromhex('55aa55aa')),
                         RTL8710BN=(8, bytes.fromhex('4f54413118000000')))
 

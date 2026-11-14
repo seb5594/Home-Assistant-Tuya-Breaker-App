@@ -180,9 +180,11 @@ class BreakerRunner(Runner):
             self.journal.emit('info', f'{self.engine_name} services stopped; selected radio restored to managed mode')
 
     def _run(self):
+        self.journal.begin_session(self.tool, self.adapter.name)
         try:
             super()._run()
         finally:
+            self.journal.finish_session(self.state)
             self.lightleak_settings = None
             if self.tool == 'cloudcutter':
                 self.settings = None  # Especially the destination Wi-Fi password.

@@ -1,0 +1,18 @@
+<section id="session-overview" class="card session-overview" aria-labelledby="session-heading" hidden>
+  <div class="section-heading">
+    <div><h2 id="session-heading">Session progress</h2><p id="session-tool"></p></div>
+    <span id="session-result" class="badge" role="status"></span>
+  </div>
+  <div class="session-body">
+    <ol id="session-stages" aria-label="Session stages">
+      <li>Prepare</li><li>Wi-Fi</li><li>Device operation</li><li>Radio cleanup</li>
+    </ol>
+    <p id="session-detail" role="status"></p>
+    <div id="session-transfer" class="session-transfer" hidden>
+      <div><label id="session-meter-label" for="session-meter"></label><span id="session-percent"></span></div>
+      <progress id="session-meter" max="100"></progress>
+      <p id="session-bytes"></p>
+    </div>
+    <dl id="session-facts" class="session-facts"></dl>
+  </div>
+</section>

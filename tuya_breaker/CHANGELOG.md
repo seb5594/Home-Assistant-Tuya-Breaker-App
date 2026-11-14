@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-14.2
+
+- Show live session stages, recognized UnTuyaOS3 menus and measured transfer progress in Ingress.
+- Distinguish bytes reported during OTA from final device confirmation. Display Lightleak backup bytes and available CloudCutter stages.
+- Make the console and diagnostic panels collapsible. Keep the session summary across page reloads and log clearing.
+
 ## 1.2.0-beta.5
 
 - Add the centered developer credit, app catalog link and support footer.

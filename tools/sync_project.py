@@ -84,7 +84,13 @@ def outputs(root=ROOT):
         for name in ("app.js", "style.css"):
             files[f"tuya_breaker/app/static/{name}"] = (root / "vendor/untuyaos3/app/static" / name).read_text(encoding="utf-8")
         files['tuya_breaker/app/static/style.css'] += '\n' + (root/'tuya_breaker/ui/style.css').read_text(encoding='utf-8')
+        app_js = files["tuya_breaker/app/static/app.js"]
+        app_js = app_js.replace('document.querySelector(".terminal-card")', 'document.querySelector("#session-overview")')
+        app_js = app_js.replace('Session active. Follow the console; submit a menu choice when prompted.',
+                                'Session active. Check session progress for the next step.')
+        files["tuya_breaker/app/static/app.js"] = app_js
         files['tuya_breaker/app/static/style.css'] += '\n' + (root/'tuya_breaker/ui/hardware.css').read_text(encoding='utf-8')
+        files['tuya_breaker/app/static/style.css'] += '\n' + (root/'tuya_breaker/ui/session.css').read_text(encoding='utf-8')
         page = (root / "vendor/untuyaos3/app/static/index.html").read_text(encoding="utf-8")
         page = page.replace('WiFi Namespace Helper', 'WiFi App Helper')
         page = page.replace('<title>UnTuyaOS3</title>', '<title>Tuya Breaker</title>')
@@ -92,8 +98,24 @@ def outputs(root=ROOT):
         tools_page = (root / 'tuya_breaker/ui/tools.html').read_text(encoding='utf-8')
         tools_page = tools_page.replace('<!-- HARDWARE_EXPLORER -->', (root/'tuya_breaker/ui/hardware.html').read_text(encoding='utf-8'))
         page = page.replace('<main>', '<main>\n' + tools_page)
-        page = page.replace('</head>', '<script src="breaker.js" defer></script><script src="lightleak.js" defer></script><script src="hardware.js" defer></script></head>')
-        page = page.replace('<h2>UnTuyaOS3 console</h2>', '<h2>Session console</h2>')
+        page = page.replace('</head>', '<script src="breaker.js" defer></script><script src="lightleak.js" defer></script><script src="hardware.js" defer></script><script src="session.js" defer></script></head>')
+        session_page = (root / 'tuya_breaker/ui/session.html').read_text(encoding='utf-8')
+        page = page.replace('<div class="workspace">', session_page + '<div class="workspace">')
+        page = page.replace(
+            '<section class="card terminal-card"><div class="section-heading"><div><span class="eyebrow">INTERACTIVE SESSION</span><h2>UnTuyaOS3 console</h2></div><span class="live">● LIVE</span></div>',
+            '<section class="card terminal-card"><details id="session-console"><summary>Session console</summary>')
+        page = page.replace(
+            '<form id="choice-form">',
+            '</details><div id="session-menu" hidden><h3 id="session-menu-title"></h3>'
+            '<div id="session-menu-options" role="group" aria-labelledby="session-menu-title"></div></div>'
+            '<form id="choice-form">')
+        page = page.replace(
+            'Answer the numbered prompts above. Your session continues when you close this page.',
+            'Submit the menu choice shown here or open the console for the full prompt.')
+        page = page.replace(
+            '<section class="card log-card"><div class="section-heading"><div><span class="eyebrow">ALWAYS VISIBLE</span><h2>Activity & diagnostics</h2></div>',
+            '<section class="card log-card"><details id="session-diagnostics"><summary>Activity &amp; diagnostics</summary><div class="section-heading">')
+        page = page.replace('Retention is limited to 6 MiB.</p></section>', 'Retention is limited to 6 MiB.</p></details></section>')
         page = page.replace('<div class="preparation-body"><p>', '<div class="preparation-body"><p id="preparation-help">')
         page = page.replace('<p class="hint">Kickstart starts', '<p id="kickstart-help" class="hint">Kickstart starts')
         page = page.replace('<option>T1</option>', '<option>T1</option><option>BK7231T</option><option>RTL8710BN</option>')
