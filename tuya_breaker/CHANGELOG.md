@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026.11.20.2
+
+- Fix installation builds after Alpine replaced openssl-dev 3.5.9-r0 with 3.5.9-r1. Regenerate the Dockerfile from the central package pins.
+
 ## 2026.11.20
 
 - Use the shared year-month-day calendar release format without a tag prefix.
