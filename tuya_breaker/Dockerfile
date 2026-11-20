@@ -2,7 +2,7 @@
 ARG BUILD_FROM=ghcr.io/seb5594/home-assistant-base-python:3.14-alpine3.24-2026.11.0@sha256:807723c78eeeb57962063875e19b500571a5a6e89423977db6d1123832f1550e
 FROM ${BUILD_FROM} AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN apk add --no-cache build-base=0.5-r4 openssl-dev=3.5.9-r1 curl=8.23.0-r0 ca-certificates=20261020-r0
+RUN apk add --no-cache build-base openssl-dev curl ca-certificates
 RUN mkdir /upstream && curl --fail --location --retry 3 \
     https://codeload.github.com/tuya-cloudcutter/UnTuyaOS3/tar.gz/2111458225c269ddddf5353bf09a1e8f1096d959 \
     | tar -xz --strip-components=1 -C /upstream \
@@ -22,9 +22,9 @@ COPY integration/patch_cloudcutter.py /tmp/patch_cloudcutter.py
 RUN python /tmp/patch_cloudcutter.py /cloudcutter
 
 FROM ${BUILD_FROM}
-ARG BUILD_VERSION=2026.11.20.2
+ARG BUILD_VERSION=2026.11.20.3
 ARG BUILD_ARCH=amd64
-RUN apk add --no-cache bash=5.3.9-r1 iw=6.17-r0 iproute2=7.0.0-r0 busybox=1.37.0-r31 tini=0.19.0-r3 wpa_supplicant=2.11-r4 hostapd=2.11-r4 dnsmasq=2.92_p2-r0 mosquitto=2.1.2-r1 nftables=1.1.6-r1
+RUN apk add --no-cache bash iw iproute2 busybox tini wpa_supplicant hostapd dnsmasq mosquitto nftables
 COPY --from=build /opt/venv /opt/venv
 COPY --from=build /opt/cloudcutter-venv /opt/cloudcutter-venv
 COPY --from=build /upstream /opt/untuyaos3
