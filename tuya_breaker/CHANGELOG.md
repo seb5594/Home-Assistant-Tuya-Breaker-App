@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026.11.20
+
+- Use the shared year-month-day calendar release format without a tag prefix.
+
+
 ## 2026-11-14.2
 
 - Show live session stages, recognized UnTuyaOS3 menus and measured transfer progress in Ingress.

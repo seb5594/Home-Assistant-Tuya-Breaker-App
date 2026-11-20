@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-14.2",
+  "version": "2026.11.20",
   "protocol": 3,
   "base_image": "ghcr.io/seb5594/home-assistant-base-python:3.14-alpine3.24-2026.11.0@sha256:807723c78eeeb57962063875e19b500571a5a6e89423977db6d1123832f1550e",
   "upstream_repository": "tuya-cloudcutter/UnTuyaOS3",
