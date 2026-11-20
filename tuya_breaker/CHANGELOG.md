@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026.11.20.4
+
+- Unify the three tool workspaces: the OpenBeken hardware explorer is now a shared, always-visible
+  reference panel instead of being nested only inside the CloudCutter tab, and "Find CloudCutter
+  profiles" now switches to the CloudCutter tab itself instead of requiring a manual switch first.
+- Mark hardware-explorer devices whose chip (e.g. ESP32, ESP8266) has no CloudCutter exploit
+  profile, with a short note instead of a dead-end "Find CloudCutter profiles" search; only
+  Beken BK7231T/BK7231N and Realtek RTL8710BN/RTL8720CF are covered by CloudCutter today.
+- Minor WebUI cleanup: remove a dead, overridden `.tool-tabs` CSS rule and align the CloudCutter
+  tab label with its name used elsewhere in the app ("Tuya CloudCutter").
+
 ## 2026.11.20.3
 
 - Follow the selected base image tag without a digest suffix.

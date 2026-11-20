@@ -1,9 +1,13 @@
 "use strict";
-let hardwareDevices = [], hardwarePage = 0, hardwareTimer, hardwareBusy = false;
+let hardwareDevices = [], hardwarePage = 0, hardwareTimer, hardwareBusy = false, currentTool = "untuyaos3";
 const HARDWARE_PAGE_SIZE = 6;
+// Mirrors breaker_catalog.CHIPS: the only chip families CloudCutter has exploit profiles for.
+// A device with any other chip (ESP32, ESP8266, XR809, …) never gets a CloudCutter match.
+const CLOUDCUTTER_CHIPS = new Set(["BK7231T", "BK7231N", "RTL8710BN", "RTL8720CF"]);
 const previousStatus = window.onSessionStatus;
 window.onSessionStatus = (state, data) => {
   previousStatus(state, data);
+  currentTool = data.tool || "untuyaos3";
   hardwareBusy = ["running","assigning","cleaning","releasing","offline"].includes(state)
     || Boolean(data.adapter_busy || data.selection_locked || breakerPending || startPending);
   $("ob-refresh").disabled = hardwareBusy;
@@ -39,7 +43,12 @@ async function showHardware(device) {
 }
 async function findHardwareProfiles(device) {
   if (hardwareBusy) return;
+  // The hardware explorer is reachable from every tool; jump to CloudCutter the
+  // same way a manual tab click would, reusing that single switch-and-poll path.
+  if (currentTool !== "cloudcutter") await $("tool-cloudcutter").onclick();
+  if (currentTool !== "cloudcutter") return; // switch was blocked; its own handler already explained why
   if (!breakerDevices.length) await $("cc-refresh").onclick();
+  $("cc-device-picker").open = true;
   $("cc-search").value = device.model || device.name;
   $("cc-search").oninput();
   $("hardware-explorer").open = false;
@@ -60,15 +69,22 @@ function renderHardware() {
   for (const device of matches.slice(hardwarePage*HARDWARE_PAGE_SIZE,(hardwarePage+1)*HARDWARE_PAGE_SIZE)) {
     const tile = document.createElement("article"); tile.className="device-tile";
     const badges = document.createElement("div"); badges.className="device-badges";
+    const cloudcutterChip = Boolean(device.chip) && CLOUDCUTTER_CHIPS.has(device.chip.toUpperCase());
     badges.append(plain("span",device.chip || "Chip unknown"),plain("span","Hardware reference","reference"));
+    if (device.chip && !cloudcutterChip) badges.append(plain("span","No CloudCutter exploit","unsupported"));
     tile.append(badges,plain("h4",device.name),plain("p",[device.vendor,device.model,device.board].filter(Boolean).join(" · ")),
       plain("p",device.keywords.slice(0,8).join(" · "),"device-keywords"));
     const actions = document.createElement("div"); actions.className="device-tile-actions";
     const detail = plain("button",device.has_template ? "View pin-map reference" : "View hardware details","secondary");
     detail.type="button"; detail.onclick=()=>showHardware(device);
-    const find = plain("button","Find CloudCutter profiles","secondary hardware-profile-search");
-    find.type="button"; find.disabled=hardwareBusy; find.onclick=()=>findHardwareProfiles(device);
-    actions.append(detail,find);
+    actions.append(detail);
+    if (device.chip && !cloudcutterChip) {
+      actions.append(plain("p","No CloudCutter exploit for this chip; these are typically flashed over UART/serial instead.","unsupported-hint"));
+    } else {
+      const find = plain("button","Find CloudCutter profiles","secondary hardware-profile-search");
+      find.type="button"; find.disabled=hardwareBusy; find.onclick=()=>findHardwareProfiles(device);
+      actions.append(find);
+    }
     if (device.guide_url) {
       const link = plain("a",device.detailed ? "Detailed teardown ↗" : "Community thread ↗","button secondary");
       link.href=device.guide_url; link.target="_blank"; link.rel="noopener noreferrer"; actions.append(link);
