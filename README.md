@@ -1,8 +1,6 @@
 <!-- header:begin (generated from project metadata) -->
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/seb5594/Home-Assistant-Tuya-Breaker-App/dev/tuya_breaker/logo.png" alt="Tuya Breaker" width="360" height="129">
-  <br>
-  Tuya Breaker
 </h1>
 
 <p align="center">
@@ -18,7 +16,7 @@
   <img src="https://img.shields.io/static/v1?label=runtime%20tests&amp;message=9%20passed&amp;color=2F855A&amp;style=flat" alt="runtime tests" height="20">
   <a href="https://github.com/seb5594/Home-Assistant-Apps/issues"><img src="https://img.shields.io/github/issues/seb5594/Home-Assistant-Tuya-Breaker-App?label=issues&amp;style=flat" alt="issues" height="20"></a><br>
   <a href="https://paypal.me/seb5594"><img src="https://img.shields.io/static/v1?label=Support&amp;message=PayPal&amp;color=0070BA&amp;logo=paypal&amp;logoColor=white&amp;style=for-the-badge" alt="PayPal" height="24"></a>
-  <a href="https://buymeacoffee.com/seb5594"><img src="https://img.shields.io/static/v1?label=Support%20%F0%9F%8D%BA&amp;message=Buy%20me%20a%20c%CC%B6o%CC%B6f%CC%B6f%CC%B6e%CC%B6e%CC%B6%20Beer&amp;color=FFDD00&amp;style=for-the-badge" alt="Buy me a beer" height="24"></a><br>
+  <a href="https://buymeacoffee.com/seb5594"><img src="https://raw.githubusercontent.com/seb5594/Home-Assistant-Apps/473dc258f963096745aac327df54950eb9b59066/.github/assets/support-beer.svg" alt="Buy me a beer" height="24"></a><br>
   <a href="https://github.com/seb5594/Home-Assistant-Apps#license"><img src="https://img.shields.io/github/license/seb5594/Home-Assistant-Tuya-Breaker-App?label=license&amp;style=flat" alt="license" height="20"></a>
 </p>
 <!-- header:end -->
@@ -49,7 +47,7 @@ The searchable OpenBeken hardware explorer reads the [official device database](
 
 ## Development
 
-Each checkout builds independently. `project.json` defines this app's version and build pins. `vendor/wifi_helper/UPSTREAM.json` records the helper SDK revision and checksums; `vendor/untuyaos3/UPSTREAM.json` records the reviewed base snapshot. Generated build-context copies are checked by CI; no sibling app repository or floating runtime download is required. Uses the official Home Assistant Python 3.13 base and hass-workflows for both architectures.
+🛠️ Each checkout builds independently. `project.json` defines this app's version and build pins. `vendor/wifi_helper/UPSTREAM.json` records the helper SDK revision and checksums; `vendor/untuyaos3/UPSTREAM.json` records the reviewed base snapshot. Generated build-context copies are checked by CI; no sibling app repository or floating runtime download is required. Uses the official Home Assistant Python 3.13 base and hass-workflows for both architectures.
 
 Credit for the exploits and payloads belongs to tuya-cloudcutter and Kuba Szczodrzyński. The pinned CloudCutter fork supplies Python 3.13 binary TLS-PSK compatibility. [Original UnTuyaOS3](https://github.com/tuya-cloudcutter/UnTuyaOS3) · [Original CloudCutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter) · [Lightleak fork](https://github.com/seb5594/lightleak).
 
@@ -60,7 +58,7 @@ All my projects are built in my spare time, just for the fun of it. Still, they 
 
 If my work helped you or turned out to be useful, show your appreciation with a hot drink for my next sleepless night.
 
-[![PayPal](https://img.shields.io/static/v1?label=Support&message=PayPal&color=0070BA&logo=paypal&logoColor=white&style=for-the-badge)](https://paypal.me/seb5594) [![Buy me a beer](https://img.shields.io/static/v1?label=Support%20%F0%9F%8D%BA&message=Buy%20me%20a%20c%CC%B6o%CC%B6f%CC%B6f%CC%B6e%CC%B6e%CC%B6%20Beer&color=FFDD00&style=for-the-badge)](https://buymeacoffee.com/seb5594)
+[![PayPal](https://img.shields.io/static/v1?label=Support&message=PayPal&color=0070BA&logo=paypal&logoColor=white&style=for-the-badge)](https://paypal.me/seb5594) [![Buy me a beer](https://raw.githubusercontent.com/seb5594/Home-Assistant-Apps/473dc258f963096745aac327df54950eb9b59066/.github/assets/support-beer.svg)](https://buymeacoffee.com/seb5594)
 <!-- support:end -->
 
 <!-- license:begin (generated from the license file) -->
