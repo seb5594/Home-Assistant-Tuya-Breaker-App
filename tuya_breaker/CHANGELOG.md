@@ -2,6 +2,8 @@
 
 ## 2026.11.20.3
 
+- Follow the selected base image tag without a digest suffix.
+
 - Resolve APK packages from the configured Alpine repositories without exact revision pins so package replacement does not block installation.
 - Declare this APK policy for CI validation and keep package names centralized in project.json.
 

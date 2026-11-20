@@ -1,6 +1,7 @@
 ARG BUILD_FROM=@@BASE_IMAGE@@
 FROM ${BUILD_FROM} AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+# hadolint ignore=DL3018
 RUN apk add --no-cache @@BUILD_PACKAGES@@
 RUN mkdir /upstream && curl --fail --location --retry 3 \
     https://codeload.github.com/@@UPSTREAM_REPOSITORY@@/tar.gz/@@UPSTREAM_REVISION@@ \
@@ -23,6 +24,7 @@ RUN python /tmp/patch_cloudcutter.py /cloudcutter
 FROM ${BUILD_FROM}
 ARG BUILD_VERSION=@@VERSION@@
 ARG BUILD_ARCH=amd64
+# hadolint ignore=DL3018
 RUN apk add --no-cache @@RUNTIME_PACKAGES@@
 COPY --from=build /opt/venv /opt/venv
 COPY --from=build /opt/cloudcutter-venv /opt/cloudcutter-venv
