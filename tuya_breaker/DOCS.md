@@ -1,10 +1,10 @@
-# Tuya Breaker (experimental)
+# 🛠️ Tuya Breaker (experimental)
 
-**Flashing or changing a device's cloud configuration can permanently brick it or make the stock app unusable. Use this tool at your own risk. A successful exploit, a transfer and a working device are different results. The new CloudCutter integration has software/container coverage, but has not yet been tested on a physical device.**
+⚠️ **Flashing or changing a device's cloud configuration can permanently brick it or make the stock app unusable. Use this tool at your own risk. A successful exploit, a transfer and a working device are different results. The new CloudCutter integration has software/container coverage, but has not yet been tested on a physical device.**
 
 Tuya Breaker brings UnTuyaOS3, Lightleak and classic Tuya CloudCutter into one Home Assistant Ingress UI. The original UnTuyaOS3 app remains in its own repository. Use only one of these main apps at a time. The same **WiFi App Helper** serves either app; it owns one radio lease at a time.
 
-## Install and prepare
+## 📦 Install and prepare
 
 1. Install Tuya Breaker and WiFi App Helper from the main Home Assistant Apps catalog.
 2. Enter the same pairing secret of at least 32 characters in their Home Assistant **Configuration** tabs. The Web UI can generate one.
@@ -13,7 +13,7 @@ Tuya Breaker brings UnTuyaOS3, Lightleak and classic Tuya CloudCutter into one H
 
 The helper's host privileges do not change. Tuya Breaker has no Docker socket, host networking, host D-Bus, Supervisor API, full-device access or kernel-module loading. Its low-port protocol servers need the standard `NET_BIND_SERVICE` permission in its AppArmor profile, alongside the existing namespace-local `NET_ADMIN` and `NET_RAW`. No ports are published.
 
-## Choose a tool
+## 🧰 Choose a tool
 
 The interface defaults to dark mode with a light-blue accent. The optional **Appearance** section offers an RGB colour picker and a reset button. This preference is stored only in your browser; it does not change app configuration or the flashing engine. Button text and link highlights adapt to keep dark colours readable.
 
@@ -31,7 +31,7 @@ The interface defaults to dark mode with a light-blue accent. The optional **App
 
 The first integration supports the usual open `SmartLife-XXXX`, `TuyaSmart-XXXX` and `A-XXXX` AP names. Custom AP prefixes, arbitrary shell hooks, known-secret injection and UF2 conversion are not exposed. Firmware upload accepts `.bin` UG/OTA images; it does not accept UART/full-flash images.
 
-## Community device explorer
+## 🔍 Community device explorer
 
 The CloudCutter view also includes a native **Device explorer** based on the [OpenBeken device list](https://openbekeniot.github.io/webapp/devicesList.html). It reads the same [public JSON database](https://openbekeniot.github.io/webapp/devices.json) programmatically, normalizes the records, and caches one snapshot in private app storage. Updates are explicit; cached records work offline. The UI shows the last successful fetch and source dataset version.
 
@@ -41,7 +41,7 @@ Search across vendor, model, chip, module and keywords; filter for detailed tear
 
 Thank you to **OpenBeken / openshwprojects**, the **Elektroda.com teardown authors and contributors**, and the **tuya-cloudcutter community** for building and sharing these resources. Source links remain visible in the explorer. Community data retains its original attribution and terms; this app's MIT license does not relicense those records.
 
-## Session progress
+## 📊 Session progress
 
 The progress card appears when a session starts. It shows the active stage, elapsed time and adapter. For UnTuyaOS3 it also shows the recognized platform and firmware menu, device Wi-Fi, signal and firmware transfer. Choose a menu option and press **Submit choice**. Open **Session console** for the original prompt whenever a menu is not recognized. Lightleak and CloudCutter still use the original console prompts for their confirmations.
 
@@ -49,7 +49,7 @@ The UnTuyaOS3 bar counts unique byte ranges reported by the script. The final re
 
 Expand **Session console** or **Activity & diagnostics** to read live output. Reloading the page or clearing the logs keeps the current session summary. The summary only exposes selected fields, while the raw logs may contain sensitive device data.
 
-## Secrets, logs and cleanup
+## 🔒 Secrets, logs and cleanup
 
 Destination Wi-Fi credentials are not returned in status or written to the journal. They live in memory and a mode-0600 private session file, and are removed after the attempt. Obvious secret-bearing upstream log lines are redacted. Treat diagnostic archives as private nevertheless.
 
@@ -61,7 +61,7 @@ On finish, failure or cancellation the runner terminates its own process group, 
 
 Closing the page does not stop a run. **Stop session** can interrupt a write and brick the target. Tool changes and adapter changes stay locked until cleanup finishes.
 
-## Upstreams and Python 3.13
+## 📚 Upstreams and Python 3.13
 
 - [UnTuyaOS3](https://github.com/tuya-cloudcutter/UnTuyaOS3) supplies the established interactive flashing engine.
 - [Tuya CloudCutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter) supplies the classic exploit, protocol handlers, schemas and device catalogue.
@@ -94,11 +94,11 @@ Cancel and every outcome use the same process-group termination, scoped-service 
 
 Thanks to **Kuba Szczodrzyński / tuya-cloudcutter** for [Lightleak](https://github.com/tuya-cloudcutter/lightleak), the payloads and [Cloudcutter Android's protocol reference](https://github.com/tuya-cloudcutter/cloudcutter-android). Payloads come from [the verified build of seb5594's fork](https://github.com/seb5594/lightleak/actions/runs/40438135099), revision `9163a1219d8ae651c16d52159c7ad2f003531b8e`. The six binaries and a snapshot of the 13 official generic variants are bundled for offline use. The build verifies their checked-in SHA-256 manifest; no expiring GitHub artifact or access token is needed at runtime. See `lightleak/manifest.json` and `lightleak/README.md` in the source tree.
 
-## Mobile CloudCutter profile selection
+## 📱 Mobile CloudCutter profile selection
 
 The official catalogue is presented as six-device pages with search and a brand filter. Cards show full names instead of truncated select-option text. After loading a device, its search section collapses and the selected device remains visible; Change device reopens it. Choose **Load matching profiles**, then inspect the profile cards' original firmware, chip and SDK details. No profile is preselected; choose the exact original firmware, then separately review the operation and acknowledge risk before starting. Compact native selectors remain available in collapsed sections for desktop/keyboard workflows. Searching or paging does not silently change the selected device. Loading another device invalidates a previous backend approval.
 
-## Independent repository migration
+## 🚚 Independent repository migration
 
 Use the standalone [WiFi App Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App), following its migration guide after all old-helper leases are recovered. Tuya Breaker keeps installed slug `tuya_breaker` and has its own release version. Helper and client use API protocol 3, not matching app release numbers. The helper reports its actual app identity for the setup link, even when installed from a different repository. This app builds independently from pinned source snapshots, with no sibling app checkout required.
 

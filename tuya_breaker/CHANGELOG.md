@@ -10,6 +10,13 @@
   Beken BK7231T/BK7231N and Realtek RTL8710BN/RTL8720CF are covered by CloudCutter today.
 - Minor WebUI cleanup: remove a dead, overridden `.tool-tabs` CSS rule and align the CloudCutter
   tab label with its name used elsewhere in the app ("Tuya CloudCutter").
+- Add fitting emojis to the CloudCutter and UnTuyaOS3 sections of the Web UI and to the READMEs
+  and setup guide, for quicker visual scanning. Fix a footer duplicated by the vendor refresh
+  below, and make `tools/sync_project.py` fail loudly instead of silently skipping a
+  transformation when a vendored source text it expects to find has changed upstream.
+- Refresh the vendored UnTuyaOS3 base app/UI snapshot (`vendor/untuyaos3`) to
+  seb5594/Home-Assistant-UnTuyaOS3-App `634b291`, carrying over its own emoji pass and footer
+  styling.
 
 ## 2026.11.20.3
 

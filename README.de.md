@@ -4,7 +4,7 @@
 
 Eine experimentelle Home-Assistant-WebUI für **UnTuyaOS3 → Lightleak → Tuya-Cloudcutter**, mit eigenständiger Versionierung und dem separat installierbaren [WiFi App Helper](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App).
 
-**Brickgefahr: Die Nutzung erfolgt auf eigene Verantwortung.** Eine abgeschlossene Übertragung garantiert keinen startfähigen Zustand. Lightleak verändert bereits beim Einrichten den Flash-Speicher; seine Dumps enthalten Geheimnisse und sind keine unveränderten Backups. Der native Lightleak-Controller und der Linux-AP-Modus sind noch nicht an echter Zielhardware validiert.
+⚠️ **Brickgefahr: Die Nutzung erfolgt auf eigene Verantwortung.** Eine abgeschlossene Übertragung garantiert keinen startfähigen Zustand. Lightleak verändert bereits beim Einrichten den Flash-Speicher; seine Dumps enthalten Geheimnisse und sind keine unveränderten Backups. Der native Lightleak-Controller und der Linux-AP-Modus sind noch nicht an echter Zielhardware validiert.
 
 Beide Apps aus dem [Hauptkatalog](https://github.com/seb5594/Home-Assistant-Apps) installieren, dasselbe private Kopplungsgeheimnis konfigurieren und zuerst den Helper starten. Protection mode und AppArmor eingeschaltet lassen. Adapter, Werkzeug, Profil und Firmware über die Oberfläche auswählen; Hinweise im Live-Terminal befolgen. Keine Host-Befehle nötig.
 

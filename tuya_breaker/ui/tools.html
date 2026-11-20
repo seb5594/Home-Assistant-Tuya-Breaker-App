@@ -1,4 +1,4 @@
-<section class="card tool-card"><div class="section-heading"><div><span class="eyebrow">EXPERIMENTAL · CHOOSE A TOOL</span><h2>One workspace, one active radio</h2></div></div>
+<section class="card tool-card"><div class="section-heading"><div><span class="eyebrow">🧪 EXPERIMENTAL · CHOOSE A TOOL</span><h2>One workspace, one active radio</h2></div></div>
 <div class="adapter-settings"><div class="tool-tabs" role="group" aria-label="Flashing tool">
 <button id="tool-untuyaos3" type="button" aria-pressed="true">UnTuyaOS3</button><button id="tool-lightleak" class="secondary" type="button" aria-pressed="false">Lightleak</button><button id="tool-cloudcutter" class="secondary" type="button" aria-pressed="false">Tuya CloudCutter</button></div>
 <p id="tool-description">UnTuyaOS3: use the established platform and firmware menus.</p>
@@ -22,32 +22,32 @@
 </details><p class="hint">Lightleak, its payloads and the Android protocol reference are by Kuba Szczodrzyński / tuya-cloudcutter. Fork builds: seb5594. This native Home Assistant controller has software tests; physical-device validation is pending.</p>
 </div>
 <div id="cloudcutter-settings" hidden>
-<details id="cc-configuration" open><summary>Device profile and operation</summary>
+<details id="cc-configuration" open><summary>✂️ Device profile and operation</summary>
 <p><strong>CloudCutter needs an exact device/firmware profile.</strong> Check the original firmware version before removing the device from SmartLife. Patched firmware cannot be made vulnerable by selecting another profile.</p>
-<button id="cc-refresh" class="secondary" type="button">Load / refresh official device catalogue</button>
-<details id="cc-device-picker" open><summary>1 · Find the exact device and original firmware</summary><div class="cc-picker-heading"><span class="eyebrow">1 · FIND YOUR EXACT DEVICE</span><h3>Device and original firmware</h3><p class="hint">Search the model and the firmware version shown in SmartLife. Similar hardware alone is not a match.</p></div>
+<button id="cc-refresh" class="secondary" type="button">🔄 Load / refresh official device catalogue</button>
+<details id="cc-device-picker" open><summary>1 · Find the exact device and original firmware</summary><div class="cc-picker-heading"><span class="eyebrow">🔍 1 · FIND YOUR EXACT DEVICE</span><h3>Device and original firmware</h3><p class="hint">Search the model and the firmware version shown in SmartLife. Similar hardware alone is not a match.</p></div>
 <div class="cc-filters"><div><label for="cc-search">Search model or firmware</label><input id="cc-search" type="search" placeholder="Brand, model, original firmware…" autocomplete="off"></div><div><label for="cc-brand">Brand</label><select id="cc-brand"><option value="">All brands</option></select></div></div>
 <p id="cc-device-count" class="hint" aria-live="polite">Load the official catalogue first.</p><div id="cc-device-cards" class="cc-card-grid"></div>
 <div class="cc-pagination"><button id="cc-device-prev" class="secondary" type="button">Previous devices</button><span id="cc-device-page" class="hint"></span><button id="cc-device-next" class="secondary" type="button">Next devices</button></div>
 
 <details class="cc-compact"><summary>Compact device selector</summary><label for="cc-device">Device</label><select id="cc-device"><option value="">Load the catalogue first…</option></select><button id="cc-load" class="secondary" type="button">Load profiles for this device</button></details>
 </details><p id="cc-selected-device" class="cc-selection" aria-live="polite">No device selected.</p><button id="cc-change-device" class="secondary" type="button">Change device</button>
-<div class="cc-picker-heading"><span class="eyebrow">2 · MATCH THE ORIGINAL FIRMWARE</span><h3>Exact firmware profile</h3></div>
+<div class="cc-picker-heading"><span class="eyebrow">🧩 2 · MATCH THE ORIGINAL FIRMWARE</span><h3>Exact firmware profile</h3></div>
 <p id="cc-profile-count" class="hint" aria-live="polite">Load profiles for a device first.</p><div id="cc-profile-cards" class="cc-card-grid"></div>
 <details class="cc-compact"><summary>Compact profile selector</summary><label for="cc-profile">Exact firmware profile</label><select id="cc-profile"><option value="">Choose a device first…</option></select></details>
-<div class="cc-picker-heading"><span class="eyebrow">3 · REVIEW THE OPERATION</span></div>
+<div class="cc-picker-heading"><span class="eyebrow">✅ 3 · REVIEW THE OPERATION</span></div>
 <form id="cc-form"><label for="cc-method">Operation</label><select id="cc-method"><option value="flash">Flash custom firmware</option><option value="detach">Detach from Tuya cloud, keep stock firmware</option></select>
 <div id="cc-flash-settings"><label for="cc-firmware">Firmware image for the profile's chip</label><select id="cc-firmware"><option value="">Upload a matching image in Firmware library…</option></select></div>
 <div id="cc-detach-settings" hidden><label for="cc-ssid">Device's destination Wi-Fi SSID</label><input id="cc-ssid" maxlength="32" autocomplete="off">
 <label for="cc-password">Destination Wi-Fi password</label><input id="cc-password" type="password" maxlength="63" autocomplete="new-password" placeholder="Enter for each attempt; empty only for open Wi-Fi">
 <p class="hint">Credentials stay in memory and this session's private temporary file. Download the resulting local device credentials below after detaching.</p></div>
-<button id="cc-save" class="secondary">Review and use this configuration</button></form>
+<button id="cc-save" class="secondary">✅ Review and use this configuration</button></form>
 </details><p id="cc-review" class="hint">No CloudCutter configuration reviewed yet.</p>
-<details><summary>Private local credentials</summary>
-<a class="button secondary" href="api/cloudcutter/credentials" download="tuya-breaker-private-credentials.zip">Download private local credentials</a>
+<details><summary>🔐 Private local credentials</summary>
+<a class="button secondary" href="api/cloudcutter/credentials" download="tuya-breaker-private-credentials.zip">🔐 Download private local credentials</a>
 <p class="hint">This archive contains secrets. Keep it private; do not attach it to public reports. CloudCutter changes the device's cloud configuration, including when an OTA attempt later fails.</p>
 </details>
 </div></div></section>
-<details class="card appearance-card"><summary>Appearance · dark mode & accent colour</summary>
+<details class="card appearance-card"><summary>🎨 Appearance · dark mode & accent colour</summary>
 <label for="accent-colour">RGB accent colour</label><input id="accent-colour" type="color" value="#7ac7ff"><output id="accent-value" for="accent-colour">#7AC7FF</output>
 <button id="accent-reset" class="secondary" type="button">Restore light blue</button><p class="hint">Saved only in this browser. Dark mode stays enabled.</p></details>

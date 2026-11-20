@@ -2,6 +2,7 @@
 ARG BUILD_FROM=ghcr.io/seb5594/home-assistant-base-python:3.14-alpine3.24-2026.11.0
 FROM ${BUILD_FROM} AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # hadolint ignore=DL3018
 RUN apk add --no-cache build-base openssl-dev curl ca-certificates
 RUN mkdir /upstream && curl --fail --location --retry 3 \
@@ -14,6 +15,7 @@ RUN python /tmp/patch_upstream.py /upstream
 RUN mkdir /cloudcutter && curl --fail --location --retry 3 \
     https://codeload.github.com/seb5594/tuya-cloudcutter/tar.gz/e8508b6bae09c00c67b5a5336b56d52153e40d25 \
     | tar -xz --strip-components=1 -C /cloudcutter
+
 # Separate virtual environments preserve UnTuyaOS3's sslpsk3 2.x and CloudCutter's
 # byte-preserving 1.1.1 callbacks. Both use the official HA Python 3.13 base.
 RUN python -m venv /opt/cloudcutter-venv \
@@ -24,7 +26,7 @@ RUN python /tmp/patch_cloudcutter.py /cloudcutter
 
 FROM ${BUILD_FROM}
 ARG BUILD_VERSION=2026.11.20.4
-ARG BUILD_ARCH=amd64
+
 # hadolint ignore=DL3018
 RUN apk add --no-cache bash iw iproute2 busybox tini wpa_supplicant hostapd dnsmasq mosquitto nftables
 COPY --from=build /opt/venv /opt/venv
@@ -45,7 +47,9 @@ RUN chmod 755 /opt/webapp/dhcp.sh /run.sh
 ENV PATH=/opt/venv/bin:$PATH PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 UNTUYAOS3_SKIP_INSTALL=1
 WORKDIR /opt/webapp
 LABEL io.hass.name="Tuya Breaker" io.hass.description="Experimental UnTuyaOS3, Lightleak and CloudCutter workspace" \
-    io.hass.type="addon" io.hass.version="${BUILD_VERSION}" io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" io.hass.version="${BUILD_VERSION}" \
+    org.opencontainers.image.title="Home Assistant App: Tuya Breaker" \
+    org.opencontainers.image.version="${BUILD_VERSION}" \
     org.opencontainers.image.source="https://github.com/seb5594/Home-Assistant-Tuya-Breaker-App"
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/run.sh"]
