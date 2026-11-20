@@ -4,8 +4,11 @@ version: 2026.11.20.3
 slug: tuya_breaker
 url: https://github.com/seb5594/Home-Assistant-Tuya-Breaker-App
 arch:
-- amd64
 - aarch64
+- amd64
+- armv7
+- armhf
+- i386
 startup: application
 boot: manual_only
 init: false
