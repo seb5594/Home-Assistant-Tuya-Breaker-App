@@ -1,6 +1,7 @@
 ARG BUILD_FROM=@@BASE_IMAGE@@
 FROM ${BUILD_FROM} AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # hadolint ignore=DL3018
 RUN apk add --no-cache @@BUILD_PACKAGES@@
 RUN mkdir /upstream && curl --fail --location --retry 3 \
@@ -13,6 +14,7 @@ RUN python /tmp/patch_upstream.py /upstream
 RUN mkdir /cloudcutter && curl --fail --location --retry 3 \
     https://codeload.github.com/@@CLOUDCUTTER_REPOSITORY@@/tar.gz/@@CLOUDCUTTER_REVISION@@ \
     | tar -xz --strip-components=1 -C /cloudcutter
+
 # Separate virtual environments preserve UnTuyaOS3's sslpsk3 2.x and CloudCutter's
 # byte-preserving 1.1.1 callbacks. Both use the official HA Python 3.13 base.
 RUN python -m venv /opt/cloudcutter-venv \
@@ -23,7 +25,7 @@ RUN python /tmp/patch_cloudcutter.py /cloudcutter
 
 FROM ${BUILD_FROM}
 ARG BUILD_VERSION=@@VERSION@@
-ARG BUILD_ARCH=amd64
+
 # hadolint ignore=DL3018
 RUN apk add --no-cache @@RUNTIME_PACKAGES@@
 COPY --from=build /opt/venv /opt/venv
@@ -44,7 +46,9 @@ RUN chmod 755 /opt/webapp/dhcp.sh /run.sh
 ENV PATH=/opt/venv/bin:$PATH PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 UNTUYAOS3_SKIP_INSTALL=1
 WORKDIR /opt/webapp
 LABEL io.hass.name="Tuya Breaker" io.hass.description="Experimental UnTuyaOS3, Lightleak and CloudCutter workspace" \
-    io.hass.type="addon" io.hass.version="${BUILD_VERSION}" io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" io.hass.version="${BUILD_VERSION}" \
+    org.opencontainers.image.title="Home Assistant App: Tuya Breaker" \
+    org.opencontainers.image.version="${BUILD_VERSION}" \
     org.opencontainers.image.source="https://github.com/seb5594/Home-Assistant-Tuya-Breaker-App"
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/run.sh"]
