@@ -1,5 +1,5 @@
 {
-  "image_pulls": 10,
+  "image_pulls": 11,
   "image_size": {
     "aarch64": 72615234,
     "amd64": 72760789
