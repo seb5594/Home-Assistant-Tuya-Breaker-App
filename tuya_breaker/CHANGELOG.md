@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026.11.26
+
+- The WiFi App Helper is now found by its Home Assistant host name (`4c7fee11-wifi-helper`, configurable as *WiFi App Helper host*). The pairing secret and its generator are gone; update the helper to a release with protocol 4 first.
+- Pin SDK 2.0.0 (wire protocol 4).
+
 ## 2026.11.20.3
 
 - Follow the selected base image tag without a digest suffix.

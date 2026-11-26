@@ -6,6 +6,6 @@ Tuya Breaker combines UnTuyaOS3, Lightleak and Tuya-Cloudcutter in one experimen
 
 Install this app from the [Home Assistant Apps catalog](https://github.com/seb5594/Home-Assistant-Apps). Read the [setup and usage guide](DOCS.md) and [changelog](CHANGELOG.md) before starting.
 
-Keep Protection mode and AppArmor enabled. Install the helper once, configure the same pairing secret, and run only one main app at a time. Adapter selection and all interactive steps happen in the Web UI.
+Keep Protection mode and AppArmor enabled. Install the helper once, keep the default helper host name, and run only one main app at a time. Adapter selection and all interactive steps happen in the Web UI.
 
 Lightleak uses generic chip variants, an ESP CustomAP companion or an experimental Linux AP, and a separate acknowledgement before payload-sector writes. Its complete 2 MiB dumps contain private device secrets and payload modifications. Read the [Lightleak guide](DOCS.md#lightleak-generic-variants-and-private-flash-dumps) before use.
