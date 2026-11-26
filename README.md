@@ -28,7 +28,7 @@ Tuya Breaker combines **UnTuyaOS3 → Lightleak → Tuya-Cloudcutter** in one ex
 
 > **This tool can permanently brick devices. Use at your own risk and accept responsibility for your hardware. Neither a completed transfer nor a valid dump guarantees that a device boots. Lightleak setup itself changes flash; its dumps are private post-exploit snapshots. The native Lightleak controller and Linux AP mode still need physical-device validation.**
 
-Install Tuya Breaker and WiFi App Helper from the [Home Assistant Apps catalog](https://github.com/seb5594/Home-Assistant-Apps), configure the same private pairing secret and keep Protection mode/AppArmor on. All user interaction uses the app Configuration and Ingress Web UI; no host terminal is needed.
+Install Tuya Breaker and WiFi App Helper from the [Home Assistant Apps catalog](https://github.com/seb5594/Home-Assistant-Apps), keep the default WiFi App Helper host (`4c7fee11-wifi-helper`) and keep Protection mode/AppArmor on. All user interaction uses the app Configuration and Ingress Web UI; no host terminal is needed.
 
 [Full setup and usage guide](tuya_breaker/DOCS.md) · [Changelog](tuya_breaker/CHANGELOG.md) · [WiFi Helper migration](https://github.com/seb5594/Home-Assistant-WiFi-Helper-App/blob/dev/README.md#migration-from-anti-tuya-wifi-helper)
 

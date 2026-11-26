@@ -25,7 +25,7 @@ COPY integration/patch_cloudcutter.py /tmp/patch_cloudcutter.py
 RUN python /tmp/patch_cloudcutter.py /cloudcutter
 
 FROM ${BUILD_FROM}
-ARG BUILD_VERSION=2026.11.20.3
+ARG BUILD_VERSION=2026.11.26
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache bash iw iproute2 busybox tini wpa_supplicant hostapd dnsmasq mosquitto nftables

@@ -7,7 +7,7 @@ Tuya Breaker brings UnTuyaOS3, Lightleak and classic Tuya CloudCutter into one H
 ## Install and prepare
 
 1. Install Tuya Breaker and WiFi App Helper from the main Home Assistant Apps catalog.
-2. Enter the same pairing secret of at least 32 characters in their Home Assistant **Configuration** tabs. The Web UI can generate one.
+2. Leave **WiFi App Helper host** at its default (`4c7fee11-wifi-helper`); change it only for a helper installed from another repository, for example `local-wifi-helper`. There is no pairing secret.
 3. Keep Protection mode and AppArmor enabled. Start the helper, then Tuya Breaker, and open its Web UI.
 4. Select an idle AP-capable Wi-Fi adapter. Home Assistant must use another connection, preferably Ethernet. Both USB and internal adapters depend on the HAOS driver and firmware.
 
